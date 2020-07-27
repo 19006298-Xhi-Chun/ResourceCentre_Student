@@ -206,11 +206,14 @@ public class ResourceCentre
 	public static Chromebook inputChromebook() { //done by Aravind
 		Chromebook cb =null;
 		// write your code here
+		
+		System.out.println("Chromebook added");
 		return cb;
 	}	
 	
 	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {//done by Aravind
 		// write your code here
+		
 	}
 	
 	//================================= Option 3 Loan =================================
@@ -250,6 +253,7 @@ public class ResourceCentre
 	public static boolean doLoanChromebook(ArrayList<Chromebook> chromebookList, String tag, String dueDate)
 	{
 		// write your code here
+		//Xhi Chun
 		boolean Loaned=false;
 		for (int i=0; i< chromebookList.size() ; i++) {
 			if(tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())&& chromebookList.get(i).getIsAvailable() ==true) {
@@ -265,6 +269,7 @@ public class ResourceCentre
 	public static void loanChromebook(ArrayList<Chromebook> chromebookList)
 	{
 		// write your code here
+		//Xhi Chun
 		ResourceCentre.viewAllChromebook(chromebookList);
 		String tag = Helper.readString("Enter asset tag > ");
 		String due = Helper.readString("Enter due date > ");
@@ -301,17 +306,17 @@ public class ResourceCentre
 		String tag = Helper.readString("Enter asset tag > ");
 		Boolean isReturned = doReturnCamcorder(camcorderList, tag);
 		
-<<<<<<< HEAD
 		if (isReturned ==false) {
-=======
+
 		if (isReturned == false)
 		{
->>>>>>> branch 'master' of https://github.com/19006298-Xhi-Chun/ResourceCentre_Student.git
+
 			System.out.println("Invalid asset tag");
 		}
 		else
 		{
 			System.out.println("Camcorder " + tag + " returned");
+		}
 		}
 	}
 
