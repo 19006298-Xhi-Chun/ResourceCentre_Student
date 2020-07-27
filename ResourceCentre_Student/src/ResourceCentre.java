@@ -177,14 +177,20 @@ public class ResourceCentre {
 		System.out.println("Camcorder added");
 	}
 	
-	public static Chromebook inputChromebook() {	
+	public static Chromebook inputChromebook() { //done by Aravind
 		Chromebook cb =null;
 		// write your code here
+		 String x = Helper.readString("What is the assetTag > ");
+         String y = Helper.readString("What is the description > ");
+         String z = Helper.readString("What is the os > ");
+         Chromebook a = new Chromebook(x,y,z);
 		return cb;
 		
 	}	
-	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {
+	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {//done by Aravind
 		// write your code here
+		chromebookList.add(cb);
+		System.out.println("Chromebook added");
 	}
 	
 	//================================= Option 3 Loan =================================
