@@ -57,6 +57,16 @@ public class ResourceCentreTest
 	{
 		//fail("Not yet implemented");
 		// write your code here
+
+		assertNotNull("Test if there is valid Chromebook arraylist to add to", chromebookList);
+		
+		ResourceCentre.addChromebook(chromebookList, cb1);	
+		assertEquals("Test if that Chromebook arraylist size is 1?", 1, chromebookList.size());
+		
+		assertSame("Test that the Chromebook is added same as 1st item of the list?", cb1, chromebookList.get(0));
+		
+		ResourceCentre.addChromebook(chromebookList, cb2);
+		assertEquals("Test Chromebook arraylist size is 2?", 2, chromebookList.size());
 	}
 	
 	@Test
@@ -90,6 +100,21 @@ public class ResourceCentreTest
 	{
 		//fail("Not yet implemented");
 		// write your code here
+		assertNotNull("Test if there is valid Camcorder arraylist to add to", chromebookList);
+		String allChromebook= ResourceCentre.retrieveAllChromebook(chromebookList);
+		String testOutput = "";
+		assertEquals("Check that ViewAllChromebooklist", testOutput, allChromebook);
+		
+		ResourceCentre.addChromebook(chromebookList, cb1);
+		ResourceCentre.addChromebook(chromebookList, cb2);
+		assertEquals("Test if that Chromebook arraylist size is 2?", 2, chromebookList.size());
+		
+		allChromebook= ResourceCentre.retrieveAllChromebook(chromebookList);
+		
+		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n","CB0011", "My Google Chromebook 1st", "Yes", "", "Mac OS");
+		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","CB0012", "SAMSUNG Chromebook 4+", "Yes", "", "Win 10");
+	
+		assertEquals("Check that ViewAllChromebooklist", testOutput, allChromebook);
 		
 	}
 
@@ -116,6 +141,16 @@ public class ResourceCentreTest
 	{
 		//fail("Not yet implemented");
 		// write your code here
+		//LXC
+		assertNotNull("Test if there is valid Chromebook arraylist to loan", chromebookList);
+		
+		//After the CC001 in camcorderList is loaned with a due date of 10, the due date changed
+		ResourceCentre.addChromebook(chromebookList, cb1);
+		boolean op01 = ResourceCentre.doLoanChromebook(chromebookList, "CB0011", "21-7-2020");
+		assertEquals(true, op01);
+				
+		boolean op02 = ResourceCentre.doLoanChromebook(chromebookList, "CB0011", "29-7-2020");
+		assertEquals(false, op02);
 	}
 	
 	@Test
@@ -149,6 +184,23 @@ public class ResourceCentreTest
 	{
 		//fail("Not yet implemented");
 		// write your code here
+		assertNotNull("Test if there is valid Chromebook arraylist to",chromebookList);
+		ResourceCentre.addChromebook(chromebookList, cb1);
+		
+		//Error Occurs
+		Boolean isReturned = ResourceCentre.doReturnChromebook(chromebookList, "CB0011");
+		assertFalse("Test if available chromebook CC0011 is returned -false" , isReturned);
+		
+		//Normal
+		ResourceCentre.addChromebook(chromebookList, cb2);
+		cb2.setIsAvailable(false);
+		isReturned = ResourceCentre.doReturnChromebook(chromebookList, "CB0012");
+		assertTrue("Test if loaned out chromebook CB0012 is returned -true" , isReturned);
+		
+		//Error Occurs
+		isReturned = ResourceCentre.doReturnChromebook(chromebookList, "CB0013");
+		assertFalse("Test if loaned out chromebook CB0013 is returned -false" , isReturned);
+		
 	}
 	
 	@After
