@@ -203,15 +203,13 @@ public class ResourceCentre
 		System.out.println("Camcorder added");
 	}
 	
-	public static Chromebook inputChromebook()
-	{	
+	public static Chromebook inputChromebook() { //done by Aravind
 		Chromebook cb =null;
 		// write your code here
 		return cb;
 	}	
 	
-	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb)
-	{
+	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {//done by Aravind
 		// write your code here
 	}
 	
