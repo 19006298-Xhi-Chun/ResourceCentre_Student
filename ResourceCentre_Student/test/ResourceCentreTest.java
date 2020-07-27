@@ -6,7 +6,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ResourceCentreTest {
+public class ResourceCentreTest
+{
 	private Camcorder cc1;
 	private Camcorder cc2;
 	private Chromebook cb1;
@@ -15,12 +16,14 @@ public class ResourceCentreTest {
 	private ArrayList<Camcorder> camcorderList;
 	private ArrayList<Chromebook> chromebookList;
 	
-	public ResourceCentreTest() {
+	public ResourceCentreTest()
+	{
 		super();
 	}
 	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() throws Exception
+	{
 		// prepare test data
 		cc1 = new Camcorder("CC0011", "Nikon HDSLR", 40);
 		cc2 = new Camcorder("CC0012", "Sony DSC-RX100M7", 20);
@@ -33,7 +36,8 @@ public class ResourceCentreTest {
 
 	
 	@Test
-	public void addCamcorderTest() {
+	public void addCamcorderTest()
+	{
 		// Item list is not null, so that can add a new item
 		assertNotNull("Test if there is valid Camcorder arraylist to add to", camcorderList);
 		
@@ -49,13 +53,15 @@ public class ResourceCentreTest {
 		assertEquals("Test that Camcorder arraylist size is 2?", 2, camcorderList.size());
 	}
 	@Test
-	public void addChromebookTest() {
+	public void addChromebookTest()
+	{
 		//fail("Not yet implemented");
 		// write your code here
 	}
 	
 	@Test
-	public void retrieveAllCamcorderTest() {
+	public void retrieveAllCamcorderTest()
+	{
 		// Test if Item list is not null but empty, so that can add a new item
 		assertNotNull("Test if there is valid Camcorder arraylist to add to", camcorderList);
 		
@@ -79,45 +85,68 @@ public class ResourceCentreTest {
 		
 	}
 	@Test
-	public void retrieveAllChromebookTest() {
+	public void retrieveAllChromebookTest()
+	{
 		//fail("Not yet implemented");
 		// write your code here
 	}
 
 	@Test
-	public void doLoanCamcorderTest() {
+	public void doLoanCamcorderTest()
+	{
 		//fail("Not yet implemented");
 		// write your code here
 		
 	}
 	
 	@Test
-	public void doLoanChromebookTest() {
+	public void doLoanChromebookTest()
+	{
 		//fail("Not yet implemented");
 		// write your code here
 	}
 	
 	@Test
-	public void doReturnCamcorderTest() {
-		//fail("Not yet implemented");
+	public void doReturnCamcorderTest()
+	{
+		// fail("Not yet implemented");
 		// write your code here
+		// Wen Ning, Verzon
 		
+		assertNotNull("Test if there is valid CamorderList arraylist to", camcorderList);
+		ResourceCentre.addCamcorder(camcorderList, cc1);
+		
+		//Error Occurs
+		Boolean isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0011");
+		assertFalse("Test if available camcorder CC0011 is returned -false", isReturned);
+		
+		
+		//No error, normal
+		ResourceCentre.addCamcorder(camcorderList, cc2);
+		cc2.setIsAvailable(false);
+		isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0012");
+		assertTrue("Test if loaned out camcorder CC0012 is returned -true", isReturned);
+		
+		//Error occurs
+		isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0013");
+		assertFalse("Test if loaned out camcorder CC0013 is returned -false", isReturned);
 	}
+	
 	@Test
-	public void doReturnChromebookTest() {
+	public void doReturnChromebookTest()
+	{
 		//fail("Not yet implemented");
 		// write your code here
 	}
 	
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() throws Exception
+	{
 		cc1 = null;
 		cc2 = null;
 		cb1 = null;
 		cb2 = null;
 		camcorderList = null;
 		chromebookList = null;
-
 	}
-
 }
