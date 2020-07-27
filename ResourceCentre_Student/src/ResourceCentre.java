@@ -146,7 +146,6 @@ public class ResourceCentre {
 	public static String retrieveAllChromebook(ArrayList<Chromebook> chromebookList) {
 		// write your code here   -->pei wen
 		String chromeOutput = "";
-
 		for (int i = 0; i < chromebookList.size(); i++) {
 
 			chromeOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n", chromebookList.get(i).getAssetTag(),
